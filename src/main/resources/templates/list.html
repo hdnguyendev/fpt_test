@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Danh sách lịch sử tiêm chủng</title>
+</head>
+<body>
+
+<section layout:fragment="mainContent">
+    <h1 class="mt-4">Danh sách lịch sử tiêm chủng ✨</h1>
+    <div class="card mb-4">
+<!--        <div class="card-header">-->
+<!--            <a th:href="@{/add}" class="btn btn-primary "><i class="fa-solid fa-plus"></i> Thêm </a>-->
+<!--        </div>-->
+
+        <div class="row ms-1 me-1">
+            <form class="" method="GET" th:action="@{/search}">
+                <div class=" col-12">
+                    <label class="my-2 form-label" for="soDtSearch">Số điện thoại</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="soDtSearch"
+                            name="soDtSearch"
+                            th:value="${sdtSearch}"
+                    >
+                </div>
+                <div class=" col-12 ">
+                    <label class="my-2 form-label" for="tenLoaiVacXinSearch">Tên Loại Vacxin</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="tenLoaiVacXinSearch"
+                            name="tenLoaiVacXinSearch"
+                            th:value="${tenLoaiVacXinSearch}"
+                    >
+                </div>
+                <div class=" col-12 ">
+                    <label class="my-2 form-label" for="ngayTiemSearch">Ngày tiêm</label>
+                    <input
+                            type="date"
+                            class="form-control"
+                            id="ngayTiemSearch"
+                            name="ngayTiemSearch"
+                            th:value="${ngayTiemSearch}"
+                    >
+                </div>
+                <button type="submit" class="btn btn-secondary col-12 mt-3"> Search</button>
+
+            </form>
+        </div>
+
+        <div class="card-body">
+            <table id="datatablesCongViec" class="">
+                <thead>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Tên loại Vacxin</th>
+                    <th>Ngày Tiêm</th>
+                    <th>Sức khỏe</th>
+                    <th>Đánh giá</th>
+                    <th th:if="${sdtSearch}">Xóa</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Tên loại Vacxin</th>
+                    <th>Ngày Tiêm</th>
+                    <th>Sức khỏe</th>
+                    <th>Đánh giá</th>
+                    <th th:if="${sdtSearch}">Xóa</th>
+                </tr>
+                </tfoot>
+                <tbody>
+
+
+                <tr th:each="tiemchung : ${tiemchungList}">
+                    <td th:text="${tiemchung.khachHang.hoTen}"></td>
+                    <td th:text="${tiemchung.khachHang.ngaySinh}"></td>
+                    <td th:text="${tiemchung.khachHang.diaChi}"></td>
+                    <td th:text="${tiemchung.khachHang.soDT}"></td>
+                    <td th:text="${tiemchung.lieuVacXin.loaiVacXin.tenLoaiVX}"></td>
+                    <td th:text="${tiemchung.ngayTiem}"></td>
+                    <td th:text="${tiemchung.sucKhoeSauTiem}"></td>
+                    <td th:text="${tiemchung.danhGia}"></td>
+                    <td th:if="${sdtSearch}">
+                        <a th:href="@{/del/{tiemchungId}(tiemchungId=${tiemchung.maTC})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<th:block layout:fragment="script">
+    <script>
+
+    </script>
+
+</th:block>
+</body>
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<section layout:fragment="mainContent" class="container d-flex flex-column flex-wrap justify-content-center align-items-center">
+    <h1 class="mt-4">Welcome to FPT Management</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    <div class="col-md-6">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+</section>
+
+<th:block layout:fragment="script">
+   <script>
+
+   </script>
+
+</th:block>
+</body>
+
+

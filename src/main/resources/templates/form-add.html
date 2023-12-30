@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Thêm thông tin</title>
+</head>
+<body>
+
+<section layout:fragment="mainContent">
+        <h1 class="mt-4">Thêm thông tin mới đi 😍</h1>
+        <div class="row">
+            <form role="form" th:action="@{/add}" method="POST" th:object="${data}" >
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="maKH">Mã Khách Hàng</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="maKH"
+                                name="maKH"
+                                th:field="*{maKH}"
+                                placeholder="KH001">
+                        <small class=" text-danger" th:if="${#fields.hasErrors('maKH')}"
+                               th:errors="*{maKH}"></small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="hoTen">Họ và tên</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="hoTen"
+                                name="hoTen"
+                                th:field="*{hoTen}"
+                                placeholder="Hồ Đăng Nguyện">
+                        <small class=" text-danger" th:if="${#fields.hasErrors('maKH')}"
+                               th:errors="*{maKH}"></small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="ngaySinh">Ngày Sinh</label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="ngaySinh"
+                                name="ngaySinh"
+                                th:field="*{ngaySinh}">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="cmnd">Số CMND</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="cmnd"
+                                name="cmnd"
+                                th:field="*{cmnd}"
+                                placeholder="045203000779">
+                        <small class=" text-danger" th:if="${#fields.hasErrors('cmnd')}"
+                               th:errors="*{cmnd}"></small>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="soDT">Số Điện Thoại</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="soDT"
+                                name="soDT"
+                                th:field="*{soDT}"
+                                placeholder="0387672103">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="diaChi">Địa Chỉ</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="diaChi"
+                                name="diaChi"
+                                th:field="*{diaChi}"
+                                placeholder="Da Nang City">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="email">Email</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                th:field="*{email}"
+                                placeholder="hdnguyen.dev@gmail.com">
+                    </div>
+<!--                    <div class="form-group col-md-6">-->
+<!--                        <label class="my-2" for="loaiVacXin">Loại Vacxin</label>-->
+<!--                        <select class="form-control"-->
+<!--                                name="loaiVacXin"-->
+<!--                                th:field="*{loaiVacXin}"-->
+<!--                                id="loaiVacXin">-->
+<!--                            <option th:each="loaiVX : ${loaiVacXinList}" th:value="${loaiVX.maLoaiVX}"-->
+<!--                                    th:text="${loaiVX.tenLoaiVX}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="lieuVacXin">Mã Liều Vacxin</label>
+                        <select class="form-control"
+                                name="lieuVacXin"
+                                th:field="*{lieuVacXin}"
+                                id="lieuVacXin">
+                            <option th:each="lieuVX : ${lieuVacXinList}" th:value="${lieuVX.maLieuVX}"
+                                    th:text="${lieuVX.maLieuVX}"></option>
+                        </select>
+                        <small class=" text-danger" th:if="${#fields.hasErrors('lieuVacXin')}"
+                               th:errors="*{lieuVacXin}"></small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="maTC">Mã tiêm chủng</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="maTC"
+                                name="maTC"
+                                th:field="*{maTC}"
+                                placeholder="TC001">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="ngayTiem">Ngày tiêm</label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="ngayTiem"
+                                name="ngayTiem"
+                                th:field="*{ngayTiem}">
+                        <small class=" text-danger" th:if="${#fields.hasErrors('ngayTiem')}"
+                               th:errors="*{ngayTiem}"></small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="ngayNhacTiem">Ngày nhắc hẹn</label>
+                        <input
+                                type="date"
+                                class="form-control"
+                                id="ngayNhacTiem"
+                                name="ngayNhacTiem"
+                                th:field="*{ngayNhacTiem}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="sucKhoeSauTiem">Sức khỏe sau tiêm</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="sucKhoeSauTiem"
+                                name="sucKhoeSauTiem"
+                                th:field="*{sucKhoeSauTiem}"
+                        placeholder="Tốt">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="my-2" for="danhGia">Đánh Giá</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="danhGia"
+                                name="danhGia"
+                                th:field="*{danhGia}"
+                        placeholder="Tốt">
+                    </div>
+                </div>
+                <button type="submit" class="mt-2 btn btn-primary w-50">Thêm</button>
+            </form>
+        </div>
+</section>
+
+<th:block layout:fragment="script">
+    <script>
+        // $(document).ready(function () {
+        //     $('#loaiVacXin').click(function (e) {
+        //         e.preventDefault();
+        //
+        //         var maLoaiVX = $(this).value
+        //
+        //         $.ajax({
+        //             url: `/getLieuVacXin?maLoaiVX=${maLoaiVX}`,
+        //             mode: 'cors',
+        //             success: function (response) {
+        //                 // Xử lý khi gửi thành công
+        //                 if (response.success) {
+        //                     alert("Add product to Cart successfully!")
+        //                 }
+        //             },
+        //             error: function (xhr, status, error) {
+        //                 // Xử lý khi gửi thất bại
+        //                 alert("Error!")
+        //                 console.log(error);
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
+
+</th:block>
+</body>
+
+
